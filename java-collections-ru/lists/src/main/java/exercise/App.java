@@ -16,6 +16,7 @@ public class App {
             int count = 0;
             for (String w : wordItems) {
                 if (letterItems.contains(w)) {
+                    letterItems.remove(w);
                     count++;
                 }
             }
