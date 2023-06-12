@@ -23,14 +23,13 @@ public class App {
         return wordList;
     }
 
-    public static void toString(Map<String, Integer> dictionary) {
-        System.out.println("{");
-
+    public static String toString(Map<String, Integer> dictionary) {
+        StringBuilder output = new StringBuilder("{");
         for (Map.Entry<String, Integer> item : dictionary.entrySet()) {
-            System.out.println("  " + item.getKey() + ": " + item.getValue());
+            output.append("  " + item.getValue() + ": " + item.getKey());
         }
-
-        System.out.println("}");
+        output.append("}");
+        return output.toString();
     }
 }
 //END
