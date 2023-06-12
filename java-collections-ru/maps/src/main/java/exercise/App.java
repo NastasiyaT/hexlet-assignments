@@ -14,8 +14,10 @@ public class App {
         List<String> words = Arrays.asList(sentence.split(" "));
 
         for (String w : words) {
-            int wordCount = Collections.frequency(words, w);
-            wordList.put(w, wordCount);
+            if (!wordList.containsValue(w)) {
+                int wordCount = Collections.frequency(words, w);
+                wordList.put(w, wordCount);
+            }
         }
 
         return wordList;
