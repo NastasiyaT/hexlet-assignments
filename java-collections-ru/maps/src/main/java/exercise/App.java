@@ -13,10 +13,12 @@ public class App {
 
         List<String> words = Arrays.asList(sentence.split(" "));
 
-        for (String w : words) {
-            if (!wordList.containsValue(w)) {
-                int wordCount = Collections.frequency(words, w);
-                wordList.put(w, wordCount);
+        if (!words.isEmpty()) {
+            for (String w : words) {
+                if (!wordList.containsValue(w)) {
+                    int wordCount = Collections.frequency(words, w);
+                    wordList.put(w, wordCount);
+                }
             }
         }
 
@@ -24,10 +26,15 @@ public class App {
     }
 
     public static String toString(Map<String, Integer> dictionary) {
-        StringBuilder output = new StringBuilder("{\n");
-        for (Map.Entry<String, Integer> item : dictionary.entrySet()) {
-            output.append("  " + item.getKey() + ": " + item.getValue() + "\n");
+        StringBuilder output = new StringBuilder("{");
+
+        if (!dictionary.isEmpty()) {
+            output.append("\n");
+            for (Map.Entry<String, Integer> item : dictionary.entrySet()) {
+                output.append("  ").append(item.getKey()).append(": ").append(item.getValue()).append("\n");
+            }
         }
+
         output.append("}");
         return output.toString();
     }
