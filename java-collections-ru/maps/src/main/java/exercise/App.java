@@ -24,9 +24,9 @@ public class App {
     }
 
     public static String toString(Map<String, Integer> dictionary) {
-        StringBuilder output = new StringBuilder("{");
+        StringBuilder output = new StringBuilder("{\n");
         for (Map.Entry<String, Integer> item : dictionary.entrySet()) {
-            output.append("  " + item.getValue() + ": " + item.getKey());
+            output.append("  " + item.getKey() + ": " + item.getValue() + "\n");
         }
         output.append("}");
         return output.toString();
