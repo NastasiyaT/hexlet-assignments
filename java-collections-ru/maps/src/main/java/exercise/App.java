@@ -13,15 +13,13 @@ public class App {
 
         List<String> words = Arrays.asList(sentence.split(" "));
 
-        if (!words.isEmpty()) {
+        if (!sentence.isEmpty()) {
             for (String w : words) {
                 if (!wordList.containsValue(w)) {
                     int wordCount = Collections.frequency(words, w);
                     wordList.put(w, wordCount);
                 }
             }
-        } else {
-            wordList = Collections.emptyMap();
         }
 
         return wordList;
@@ -35,11 +33,9 @@ public class App {
             for (Map.Entry<String, Integer> item : dictionary.entrySet()) {
                 output.append("  ").append(item.getKey()).append(": ").append(item.getValue()).append("\n");
             }
-            output.append("}");
-        } else {
-            output.append("}");
         }
 
+        output.append("}");
         return output.toString();
     }
 }
