@@ -13,7 +13,7 @@ public class App {
         for (Map<String, String> book: bookList) {
             for (Map.Entry<String, String> parameter : book.entrySet()) {
                 for (Map.Entry<String, String> item : itemList.entrySet()) {
-                    if (item.equals(parameter)) {
+                    if (item.equals(parameter) && !foundBooks.contains(book)) {
                         foundBooks.add(book);
                     }
                 }
