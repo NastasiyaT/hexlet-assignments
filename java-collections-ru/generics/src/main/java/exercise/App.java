@@ -1,5 +1,6 @@
 package exercise;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 import java.util.ArrayList;
@@ -11,10 +12,8 @@ public class App {
         List<Map<String, String>> foundBooks = new ArrayList<>();
 
         for (Map<String, String> book: bookList) {
-            for (Map.Entry<String, String> parameter : book.entrySet()) {
-                if (parameter.equals(itemList.entrySet())) {
-                    foundBooks.add(book);
-                }
+            if (book.entrySet().containsAll((Collection<?>) itemList)) {
+                foundBooks.add(book);
             }
         }
 
