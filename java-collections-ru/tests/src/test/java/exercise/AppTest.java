@@ -11,21 +11,20 @@ class AppTest {
     @Test
     void testTake() {
         // BEGIN
-        List<Integer> items = new ArrayList<>();
-        items.add(5);
-        items.add(9);
-        items.add(16);
-        items.add(32);
-        items.add(46);
+        List<Integer> list1 = new ArrayList<>();
+        List<Integer> expected1 = new ArrayList<>();
+        List<Integer> result1 = App.take(list1, 5);
+        assertThat(result1).isEqualTo(expected1);
 
-        int size = 3;
+        List<Integer> list2 = new ArrayList<>(Arrays.asList(5, 9, 16, 44, 93));
+        List<Integer> expected2 = new ArrayList<>(Arrays.asList(5, 9, 16, 44, 93));
+        List<Integer> result2 = App.take(list2, 8);
+        assertThat(result2).isEqualTo(expected2);
 
-        List<Integer> results = App.take(items, size);
-
-        assertThat(results)
-                .isNotEmpty()
-                .hasSize(3)
-                .contains(5, 16);
+        List<Integer> list3 = new ArrayList<>(Arrays.asList(5, 9, 16, 44, 93));
+        List<Integer> expected3 = new ArrayList<>(Arrays.asList(5, 9, 16));
+        List<Integer> result3 = App.take(list3, 3);
+        assertThat(result3).isEqualTo(expected3);
         // END
     }
 }
