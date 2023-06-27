@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 
 // BEGIN
-class AppTest{
+class AppTest {
     @Test
     void testApp() {
         String[][] items = new String[][] {{"=", "*", " "}, {" ", "=", "*"}};
@@ -14,7 +14,7 @@ class AppTest{
                                               {"=", "=", "*", "*", " ", " "},
                                               {" ", " ", "=", "=", "*", "*"},
                                               {" ", " ", "=", "=", "*", "*"}};
-        assertThat(results.equals(expected));
+        assertThat(results).isEqualTo(expected);
     }
 }
 // END
