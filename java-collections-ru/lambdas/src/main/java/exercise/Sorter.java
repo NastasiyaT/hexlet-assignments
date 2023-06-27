@@ -12,7 +12,7 @@ public class Sorter {
     public static List<String> takeOldestMans(List<Map<String, String>> users) {
         return users.stream()
                 .filter(n -> n.containsValue("male"))
-                .sorted(Comparator.comparing(i -> i.get("birthday")))
+                .sorted(Comparator.comparing(i -> LocalDate.parse(i.get("birthday"))))
                 .map(k -> k.get("name"))
                 .collect(Collectors.toList());
     }
