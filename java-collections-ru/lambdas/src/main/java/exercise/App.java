@@ -1,36 +1,37 @@
 package exercise;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
-import java.util.function.Function;
-import java.util.stream.Collectors;
 
 // BEGIN
 public class App {
     public static String[][] enlargeArrayImage(String[][] images) {
-        Function<String[], List<String[]>> mult = l -> {
-            int halfLength = l.length;
-            String[] multLine = new String[halfLength * 2];
+        var row = images[0].length * 2;
+        var column = images.length * 2;
+        String[][] newRows = new String[column / 2][row];
 
-            for (int n = 0; n < halfLength; n += 2) {
-                multLine[n] = l[n];
-                multLine[n + 1] = l[n];
+        for (String[] i : images) {
+            for (String[] nI : newRows) {
+                Arrays.stream(i)
+                        .forEach(t -> {
+                            int m = 0;
+                            nI[m] = t;
+                            nI[m + 1] = t;
+                            m += 2;
+                        });
             }
-
-            List<String[]> multColumn = new ArrayList<>(2);
-
-            multColumn.add(multLine);
-            multColumn.add(multLine);
-
-            return multColumn;
-        };
-
-        for (String[] s : images) {
-            mult.apply(s);
         }
 
-        return images;
+        String[][] newImages = new String[column][row];
+
+        Arrays.stream(newRows)
+                .forEach(e -> {
+                    int p = 0;
+                    newImages[p] = e;
+                    newImages[p + 1] = e;
+                    p += 2;
+                });
+
+        return newImages;
     }
 }
 // END
