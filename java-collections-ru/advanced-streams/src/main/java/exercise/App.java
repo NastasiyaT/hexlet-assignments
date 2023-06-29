@@ -1,21 +1,24 @@
 package exercise;
 
 import java.util.Arrays;
+import java.util.stream.Collectors;
 
 // BEGIN
 class App {
     public static String getForwardedVariables(String config) {
-        String command = "environment";
+        String command = "environment=";
         String prefix = "X_FORWARDED_";
 
         String[] items = config.lines()
-                .filter(n -> n.startsWith(command))
-                .map(k -> k.substring(command.length()).replaceAll("\"", "").split(","))
+                .filter(x -> x.startsWith(command))
+                .map(y -> y.substring(command.length()).replaceAll("\"", "").split(","))
                 .flatMap(Arrays::stream)
-                .filter(x -> x.startsWith(prefix))
+                .filter(z -> z.startsWith(prefix))
                 .toArray(String[]::new);
 
-        return Arrays.toString(items).replaceAll(prefix, "").replaceAll(" ", "");
+        String result = Arrays.toString(items);
+
+        return result.substring(1, result.length() - 1).replaceAll(prefix, "").replaceAll(" ", "");
     }
 }
 //END
