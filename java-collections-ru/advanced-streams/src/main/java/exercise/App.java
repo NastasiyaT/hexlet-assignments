@@ -9,16 +9,13 @@ class App {
         String command = "environment=";
         String prefix = "X_FORWARDED_";
 
-        String[] items = config.lines()
+        return config.lines()
                 .filter(x -> x.startsWith(command))
                 .map(y -> y.substring(command.length()).replaceAll("\"", "").split(","))
                 .flatMap(Arrays::stream)
                 .filter(z -> z.startsWith(prefix))
-                .toArray(String[]::new);
-
-        String result = Arrays.toString(items);
-
-        return result.substring(1, result.length() - 1).replaceAll(prefix, "").replaceAll(" ", "");
+                .map(l -> l.substring(prefix.length()))
+                .collect(Collectors.joining(","));
     }
 }
 //END
